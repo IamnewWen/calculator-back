@@ -49,9 +49,6 @@ router.get('/divide', (req, res) => {
 router.get('/formula', (req, res) => {
   const QUERY = req.query
   const value = QUERY.value
-
-  console.log(value)
-
   const answer = formula(value)
   res.json({
     answer: answer
