@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "透過計算機的後端，向初學者介紹後端框架(Express)的使用",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",

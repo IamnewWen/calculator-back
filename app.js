@@ -1,9 +1,10 @@
 // 引用後端框架 express
-const express = require('express')
-const cors = require('cors')
+import express from 'express'
+import cors from 'cors'
 
-// 路由們，底下可以包含多個路由器設定，這邊引用路由設定檔，沒有指定檔案預設就是./router/index.js
-const routes = require('./routes')
+// 路由們，底下可以包含多個路由器設定，這邊引用路由設定檔，使用 ES6 module設定後必須指定完整檔案路徑及副檔名，不能單純指定目錄
+//（先前使用 CommonJS語法 import沒有指定檔案路徑預設就是./router/index.js）
+import routes from './routes/index.js'
 
 // 建立 express 實例
 const app = express()
