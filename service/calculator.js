@@ -7,11 +7,11 @@ class Calculator {
   }
 
   setRound(newRound) {
-    if (newRound !== null && newRound >= 0 && Number.isInteger(newRound)) { // 檢查設置的精確度是否不為空，為整數且大於等於0
+    if (newRound !== null && newRound >= 0 && Number.isInteger(newRound)) { // check if newRound is not null, is integer, and is greater than zero
       this.ROUND = newRound
-      return true
+      return true // return succeeded signal
     }
-    return false
+    return false // return failed signal
   }
 
   getHistory() {
@@ -24,7 +24,7 @@ class Calculator {
 
     record.formula = `${v1} + ${v2}`
     record.answer = answer
-    this.history.push(record)
+    this.history.push(record) // record formula and answer
 
     return answer
   }
@@ -165,6 +165,6 @@ class Calculator {
   }
 }
 
-const calculator = new Calculator(5)
+const calculator = new Calculator(5) // new calculator in the class and export, so that we can use the same calculator in any other file
 
 export default calculator
