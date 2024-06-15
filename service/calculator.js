@@ -1,8 +1,21 @@
 // todo: handle null condition
 
-class calculator {
+class Calculator {
   constructor(ROUND) {
     this.ROUND = ROUND
+    this.history = {}
+  }
+
+  setRound(newRound) {
+    if (newRound !== null && newRound >= 0 && Number.isInteger(newRound)) { // 檢查設置的精確度是否不為空，為整數且大於等於0
+      this.ROUND = newRound
+      return true
+    }
+    return false
+  }
+
+  getHistory() {
+    return this.history
   }
 
   add(v1, v2) {
@@ -118,5 +131,7 @@ class calculator {
     return resultArray
   }
 }
+
+const calculator = new Calculator(5)
 
 export default calculator

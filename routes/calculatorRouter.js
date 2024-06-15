@@ -1,10 +1,26 @@
 import { Router } from 'express'
-import Calculator from '../service/calculator.js'
+import calculator from '../service/Calculator.js'
 const router = Router()
-const calculator = new Calculator(5)
+
 
 router.get('/', (req, res) => {
   res.status(200).send('This is a calculator')
+})
+
+router.patch('/setRound', (req, res) => {
+  const QUERY = req.query
+  const newRound = Number(QUERY.newRound)
+  const response = calculator.setRound(newRound)
+  res.json({
+    setRound: response
+  })
+})
+
+router.get('/getHistory', (req, res) => {
+  const response = calculator.getHistory()
+  res.json({
+    History: response
+  })
 })
 
 router.get('/add', (req, res) => {
