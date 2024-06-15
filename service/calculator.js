@@ -3,7 +3,7 @@
 class Calculator {
   constructor(ROUND) {
     this.ROUND = ROUND
-    this.history = {}
+    this.history = []
   }
 
   setRound(newRound) {
@@ -19,26 +19,59 @@ class Calculator {
   }
 
   add(v1, v2) {
-    return v1 + v2
+    let record = {}
+    const answer = v1 + v2
+
+    record.formula = `${v1} + ${v2}`
+    record.answer = answer
+    this.history.push(record)
+
+    return answer
   }
 
   subtract(v1, v2) {
-    return v1 - v2
+    let record = {}
+    const answer = v1 - v2
+
+    record.formula = `${v1} - ${v2}`
+    record.answer = answer
+    this.history.push(record)
+
+    return answer
   }
 
   multiply(v1, v2) {
-    return v1 * v2
+    let record = {}
+    const answer = v1 * v2
+
+    record.formula = `${v1} * ${v2}`
+    record.answer = answer
+    this.history.push(record)
+
+    return answer
   }
 
   divide(v1, v2) {
-    return Number((v1 / v2).toFixed(this.ROUND))
+    let record = {}
+    const answer = Number((v1 / v2).toFixed(this.ROUND))
+
+    record.formula = `${v1} / ${v2}`
+    record.answer = answer
+    this.history.push(record)
+
+    return answer
   }
 
   formula(value) {
+    let record = {}
     const formattedFormula = this.formulaFormatter(value)
-    const result = this.formulaOperator(formattedFormula)
+    const answer = this.formulaOperator(formattedFormula)
 
-    return result
+    record.formula = value
+    record.answer = answer
+    this.history.push(record)
+
+    return answer
   }
 
   formulaFormatter(formula) {

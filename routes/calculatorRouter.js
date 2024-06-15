@@ -19,7 +19,7 @@ router.patch('/setRound', (req, res) => {
 router.get('/getHistory', (req, res) => {
   const response = calculator.getHistory()
   res.json({
-    History: response
+    History: response // 也可以使用 ...response直接把 response陣列展開到 json裡面
   })
 })
 
