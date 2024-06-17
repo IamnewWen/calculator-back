@@ -7,16 +7,17 @@ router.get('/', (req, res) => {
   res.status(200).send('This is a calculator')
 })
 
-router.patch('/setRound', (req, res) => {
+router.patch('/set_round', (req, res) => { // usually use underline or hyphen to combine words as route name
   const QUERY = req.query
   const newRound = Number(QUERY.newRound)
+  //檢查
   const response = calculator.setRound(newRound)
   res.json({
     setRound: response
   })
 })
 
-router.get('/getHistory', (req, res) => {
+router.get('/get_history', (req, res) => {
   const response = calculator.getHistory()
   res.json({
     History: response // can also use '...response' to directly expand response into json

@@ -14,62 +14,61 @@ class Calculator {
     return false // return failed signal
   }
 
+  saveHistory(v1, v2, operator, answer) {
+    let record = {}
+
+    if (operator === '+' || operator === '-' || operator === '*' || operator === '/') {
+      record.formula = `${v1} ${operator} ${v2}`
+      record.answer = answer
+      this.history.push(record) // record formula and answer
+    } else {
+      record.formula = operator
+      record.answer = answer
+      this.history.push(record)
+    }
+  }
+
   getHistory() {
     return this.history
   }
 
   add(v1, v2) {
-    let record = {}
     const answer = v1 + v2
 
-    record.formula = `${v1} + ${v2}`
-    record.answer = answer
-    this.history.push(record) // record formula and answer
+    this.saveHistory(v1, v2, '+', answer)
 
     return answer
   }
 
   subtract(v1, v2) {
-    let record = {}
     const answer = v1 - v2
 
-    record.formula = `${v1} - ${v2}`
-    record.answer = answer
-    this.history.push(record)
+    this.saveHistory(v1, v2, '-', answer)
 
     return answer
   }
 
   multiply(v1, v2) {
-    let record = {}
     const answer = v1 * v2
 
-    record.formula = `${v1} * ${v2}`
-    record.answer = answer
-    this.history.push(record)
+    this.saveHistory(v1, v2, '*', answer)
 
     return answer
   }
 
   divide(v1, v2) {
-    let record = {}
     const answer = Number((v1 / v2).toFixed(this.ROUND))
 
-    record.formula = `${v1} / ${v2}`
-    record.answer = answer
-    this.history.push(record)
+    this.saveHistory(v1, v2, '/', answer)
 
     return answer
   }
 
   formula(value) {
-    let record = {}
     const formattedFormula = this.formulaFormatter(value)
     const answer = this.formulaOperator(formattedFormula)
 
-    record.formula = value
-    record.answer = answer
-    this.history.push(record)
+    this.saveHistory(null, null, formattedFormula, answer)
 
     return answer
   }
